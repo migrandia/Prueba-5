@@ -8,8 +8,17 @@
     <style>
         :root { --dorado: #bca080; --oscuro: #1a1a1a; --crema: #fdfcf9; }
         body { margin: 0; background: #eee; font-family: 'Tenor Sans', sans-serif; overflow-x: hidden; }
-        .wrapper { max-width: 480px; margin: 0 auto; background: var(--crema); position: relative; box-shadow: 0 0 50px rgba(0,0,0,0.2); }
+        .wrapper { max-width: 480px; margin: 0 auto; background: var(--crema); position: relative; box-shadow: 0 0 50px rgba(0,0,0,0.2); overflow: hidden; }
         
+        /* DECORACIÓN FLORAL */
+        .flores-esquina {
+            position: absolute; width: 120px; opacity: 0.15; z-index: 10; pointer-events: none;
+            filter: sepia(1) saturate(0.5);
+        }
+        .separador-floral {
+            width: 60px; margin: 20px auto; opacity: 0.25; filter: sepia(1); display: block;
+        }
+
         /* REPRODUCTOR FLOTANTE */
         #music-box {
             position: fixed; top: 20px; right: 20px; z-index: 1000;
@@ -18,11 +27,10 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; align-items: center;
         }
 
-        /* PORTADA CON TEXTO Y FOTO DE DROPBOX */
+        /* PORTADA */
         .hero { position: relative; height: 100vh; color: white; text-align: center; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
         .hero-bg { 
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-            /* Filtro oscuro para resaltar nombres */
             background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6)), 
             url('https://www.dropbox.com/scl/fi/pd9mjnnpuz1awyw4memr7/novios-de-frente.jpg?rlkey=fzbs6iftt0125yat387uxnbei&raw=1') center/cover; 
             z-index: 1; 
@@ -30,13 +38,13 @@
         .hero-text { z-index: 2; text-transform: uppercase; letter-spacing: 5px; }
         .hero-text h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; margin: 15px 0; font-weight: normal; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
 
-        section { padding: 80px 30px; text-align: center; }
-        .img-full { width: 100%; display: block; object-fit: cover; }
-        .serif { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 2rem; margin-bottom: 20px; }
+        section { padding: 60px 30px; text-align: center; position: relative; }
+        .img-full { width: 100%; display: block; object-fit: cover; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .serif { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.8rem; margin-bottom: 20px; line-height: 1.3; }
         .historia-texto { font-size: 0.95rem; line-height: 1.8; color: #555; font-style: italic; margin-bottom: 30px; }
         
-        /* CONTADOR REPARADO */
-        .timer-container { display: flex; justify-content: center; gap: 15px; margin: 30px 0; padding: 25px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
+        /* CONTADOR */
+        .timer-container { display: flex; justify-content: center; gap: 15px; margin: 20px 0; padding: 25px 0; border-top: 1px solid #f2ede4; border-bottom: 1px solid #f2ede4; }
         .t-block { text-align: center; min-width: 60px; }
         .t-val { display: block; font-size: 1.5rem; color: var(--dorado); font-weight: bold; }
         .t-lab { font-size: 0.6rem; text-transform: uppercase; opacity: 0.7; }
@@ -61,6 +69,7 @@
     </audio>
 
     <div class="wrapper">
+        <img src="https://cdn-icons-png.flaticon.com/512/3233/3233483.png" class="flores-esquina" style="top: -20px; left: -30px;">
         
         <div class="hero">
             <div class="hero-bg"></div>
@@ -80,7 +89,9 @@
             </p>
             <img src="https://www.dropbox.com/scl/fi/yxcamxu6ark6qj5jf9da1/novios-corriendo.jpg?rlkey=wt1aapl5nh89afj7n53zou3qt&raw=1" class="img-full" style="height: 350px; border-radius: 5px; margin-bottom: 30px;">
             
-            <p class="serif" style="font-size: 1.5rem;">"Nuestro viaje apenas comienza y no importa a dónde nos lleve la vida, mientras sea de tu mano. Cada rincón del mundo es mágico si estoy junto a ti, porque mi verdadero hogar eres tú."</p>
+            <img src="https://cdn-icons-png.flaticon.com/512/3233/3233483.png" class="separador-floral">
+            
+            <p class="serif">"Nuestro viaje apenas comienza y no importa a dónde nos lleve la vida, mientras sea de tu mano. Cada rincón del mundo es mágico si estoy junto a ti, porque mi verdadero hogar eres tú."</p>
             <img src="https://www.dropbox.com/scl/fi/snutqjlkrv7oglqswicq2/novios-besandoce.jpg?rlkey=ad7z44z08wgr0f4wcd20et7nz&raw=1" class="img-full" style="height: 350px; border-radius: 5px;">
         </section>
 
@@ -92,6 +103,7 @@
         </section>
 
         <section>
+            <img src="https://cdn-icons-png.flaticon.com/512/3233/3233483.png" class="separador-floral" style="margin-top: 0;">
             <p style="font-size: 0.7rem; letter-spacing: 3px; color: var(--dorado);">CUENTA REGRESIVA</p>
             <div class="timer-container">
                 <div class="t-block"><span class="t-val" id="d">00</span><span class="t-lab">Días</span></div>
@@ -108,7 +120,10 @@
             <a href="https://www.google.com/maps/place/VILLA+LUCILA" target="_blank" class="btn-maps">Ver mapa</a>
         </section>
 
-        <img src="https://www.dropbox.com/scl/fi/pd9mjnnpuz1awyw4memr7/novios-de-frente.jpg?rlkey=fzbs6iftt0125yat387uxnbei&raw=1" class="img-full">
+        <div style="position: relative;">
+            <img src="https://www.dropbox.com/scl/fi/pd9mjnnpuz1awyw4memr7/novios-de-frente.jpg?rlkey=fzbs6iftt0125yat387uxnbei&raw=1" class="img-full">
+            <img src="https://cdn-icons-png.flaticon.com/512/3233/3233483.png" class="flores-esquina" style="bottom: 20px; right: -30px; transform: rotate(180deg);">
+        </div>
         
         <section>
             <p class="serif" style="font-size: 1.5rem;">¡Te esperamos!</p>
@@ -118,14 +133,12 @@
 
     <script>
         var musicaIniciada = false;
-
         function iniciarMusicaAlPrimerClic() {
             if (!musicaIniciada) {
                 toggleMusic();
                 musicaIniciada = true;
             }
         }
-
         function toggleMusic() {
             var audio = document.getElementById('cancion');
             var icon = document.getElementById('m-icon');
@@ -140,12 +153,10 @@
                 txt.innerHTML = "MUSICA";
             }
         }
-
         function actualizarContador() {
             const fechaBoda = new Date("Feb 14, 2026 18:00:00").getTime();
             const ahora = new Date().getTime();
             const faltante = fechaBoda - ahora;
-            
             if (faltante > 0) {
                 document.getElementById('d').innerText = Math.floor(faltante / 86400000);
                 document.getElementById('h').innerText = Math.floor((faltante % 86400000) / 3600000);
@@ -153,8 +164,6 @@
                 document.getElementById('s').innerText = Math.floor((faltante % 60000) / 1000);
             }
         }
-        
-        // Ejecutar inmediatamente al cargar la página
         actualizarContador();
         setInterval(actualizarContador, 1000);
     </script>
