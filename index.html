@@ -18,6 +18,12 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: flex; align-items: center;
         }
 
+        /* PORTADA CON TEXTO */
+        .hero { position: relative; height: 100vh; color: white; text-align: center; display: flex; flex-direction: column; justify-content: center; }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1000') center/cover; z-index: 1; }
+        .hero-text { z-index: 2; text-transform: uppercase; letter-spacing: 5px; }
+        .hero-text h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; margin: 10px 0; font-weight: normal; }
+
         section { padding: 80px 30px; text-align: center; }
         .img-full { width: 100%; display: block; object-fit: cover; }
         .serif { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 2rem; margin-bottom: 20px; }
@@ -49,15 +55,26 @@
 
     <div class="wrapper">
         
-        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000" class="img-full" style="height: 100vh;">
+        <div class="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-text">
+                <p style="font-size: 0.8rem;">NUESTRA BODA</p>
+                <h1>ANA & CARLOS</h1>
+                <div style="width: 40px; height: 1px; background: white; margin: 20px auto;"></div>
+                <p style="font-size: 0.9rem; letter-spacing: 3px;">14 . 02 . 2026</p>
+            </div>
+        </div>
 
         <section>
             <p style="font-size: 0.7rem; letter-spacing: 4px; color: var(--dorado); margin-bottom: 10px;">NUESTRA HISTORIA</p>
             <p class="serif">Como en un sueño...</p>
             <p class="historia-texto">
-                "Todo comenzó con una mirada y una sonrisa que cambió nuestro destino. A través de risas, viajes y aprendizajes, descubrimos que la vida es mucho más bella cuando se camina de la mano. Hoy, con el corazón lleno de gratitud, decidimos dar el paso más importante: ser uno solo para siempre."
+                "Todo comenzó con una mirada y una sonrisa que cambió nuestro destino. Descubrimos que la vida es mucho más bella cuando se camina de la mano. Hoy, con el corazón lleno de gratitud, decidimos ser uno solo para siempre."
             </p>
-            <img src="https://replicate.delivery/xpbkg/9A7E1A1A5D4D1B9D4D1B/output.jpg" class="img-full" style="height: 350px; border-radius: 5px; margin-bottom: 30px;">
+            <img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?q=80&w=800" class="img-full" style="height: 350px; border-radius: 5px; margin-bottom: 30px;">
+            
+            <p class="serif" style="font-size: 1.5rem;">Nuestro lugar mágico</p>
+            <img src="https://images.unsplash.com/photo-1568503446072-5a498caec262?q=80&w=800" class="img-full" style="height: 350px; border-radius: 5px;">
         </section>
 
         <section style="background-color: #fcfcfc;">
@@ -68,7 +85,7 @@
         </section>
 
         <section>
-            <p style="font-size: 0.7rem; letter-spacing: 3px;">FALTAN SOLO 60 DIAS</p>
+            <p style="font-size: 0.7rem; letter-spacing: 3px; color: var(--dorado);">CUENTA REGRESIVA</p>
             <div class="timer-container">
                 <div class="t-block"><span class="t-val" id="d">00</span><span class="t-lab">Días</span></div>
                 <div class="t-block"><span class="t-val" id="h">00</span><span class="t-lab">Hrs</span></div>
@@ -84,7 +101,7 @@
             <a href="https://www.google.com/maps/place/VILLA+LUCILA" target="_blank" class="btn-maps">Ver mapa</a>
         </section>
 
-        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1000" class="img-full">
+        <img src="https://images.unsplash.com/photo-1522673607200-1648832cee98?q=80&w=1000" class="img-full">
         
         <section>
             <p class="serif" style="font-size: 1.5rem;">¡Te esperamos!</p>
@@ -107,7 +124,7 @@
             var icon = document.getElementById('m-icon');
             var txt = document.getElementById('m-text');
             if (audio.paused) {
-                audio.play();
+                audio.play().catch(e => console.log("Esperando interacción..."));
                 icon.innerHTML = "⏸";
                 txt.innerHTML = "PAUSAR";
             } else {
@@ -121,15 +138,18 @@
             const fechaBoda = new Date("Feb 14, 2026 18:00:00").getTime();
             const ahora = new Date().getTime();
             const faltante = fechaBoda - ahora;
+            
             if (faltante > 0) {
-                document.getElementById('d').innerText = Math.floor(faltante / 864e5);
-                document.getElementById('h').innerText = Math.floor((faltante % 864e5) / 36e5);
-                document.getElementById('m').innerText = Math.floor((faltante % 36e5) / 6e4);
-                document.getElementById('s').innerText = Math.floor((faltante % 6e4) / 1000);
+                document.getElementById('d').innerText = Math.floor(faltante / 86400000);
+                document.getElementById('h').innerText = Math.floor((faltante % 86400000) / 3600000);
+                document.getElementById('m').innerText = Math.floor((faltante % 3600000) / 60000);
+                document.getElementById('s').innerText = Math.floor((faltante % 60000) / 1000);
             }
         }
-        setInterval(actualizarContador, 1000);
+        
+        // Ejecutar inmediatamente y luego cada segundo
         actualizarContador();
+        setInterval(actualizarContador, 1000);
     </script>
 </body>
 </html>
