@@ -3,14 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Nuestra Boda | Ana & Carlos</title>
+    <meta property="og:title" content="Nuestra Boda | Ana & Carlos">
+    <meta property="og:description" content="Te invitamos a celebrar nuestro amor el 14 de febrero de 2026. ¡Acompáñanos!">
+    <meta property="og:image" content="https://www.dropbox.com/scl/fi/pd9mjnnpuz1awyw4memr7/novios-de-frente.jpg?rlkey=fzbs6iftt0125yat387uxnbei&raw=1">
+    <meta property="og:type" content="website">
+    <link rel="apple-touch-icon" href="https://www.dropbox.com/scl/fi/pd9mjnnpuz1awyw4memr7/novios-de-frente.jpg?rlkey=fzbs6iftt0125yat387uxnbei&raw=1">
+
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&family=Tenor+Sans&display=swap" rel="stylesheet">
     
     <style>
         :root {
             /* === EDITA EL COLOR DE FONDO AQUÍ === */
-            --color-fondo-seccion: #2c3e50; /* Azul medianoche (ejemplo) */
-            --color-texto-seccion: #ffffff; /* Blanco */
+            --color-fondo-seccion: #2c3e50; 
+            --color-texto-seccion: #ffffff; 
             /* =========================== */
             
             --dorado: #bca080;
@@ -37,16 +44,16 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        /* Portada con texto superpuesto y sombra para visibilidad */
+        /* Portada */
         .hero { position: relative; text-align: center; color: white; overflow: hidden; }
         .hero-text { 
             position: absolute; bottom: 10%; left: 0; width: 100%; 
             z-index: 2; text-transform: uppercase; letter-spacing: 4px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para lectura */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
         .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 3rem; margin: 10px 0; font-weight: normal; }
 
-        /* Secciones compactas */
+        /* Secciones */
         section { padding: 45px 30px; text-align: center; }
         
         .color-section { 
@@ -80,9 +87,8 @@
             letter-spacing: 2px; text-transform: uppercase; margin-top: 15px;
             transition: 0.3s; border-radius: 2px;
         }
-        .btn-outline { border: 1px solid var(--dorado); color: var(--dorado); }
         .btn-color { border: 1px solid white; color: white; }
-        .btn-dark { background: var(--oscuro); color: white; width: 80%; }
+        .btn-dark { background: var(--oscuro); color: white; width: 80%; border: none; cursor: pointer; }
 
         /* Contador */
         .timer-container { 
@@ -90,6 +96,7 @@
             margin: 20px 0; padding: 20px 0; 
             border-top: 1px solid #eee; border-bottom: 1px solid #eee; 
         }
+        .t-block { min-width: 60px; }
         .t-val { display: block; font-size: 1.5rem; color: var(--dorado); font-weight: bold; }
         .t-lab { font-size: 0.6rem; text-transform: uppercase; opacity: 0.6; }
     </style>
@@ -120,7 +127,7 @@
             <p style="font-size: 0.7rem; letter-spacing: 4px; color: var(--dorado); margin-bottom: 10px;">NUESTRA HISTORIA</p>
             <h2 class="serif">Como en un sueño...</h2>
             <p class="historia-texto">
-                "Todo comenzó con una mirada y una sonrisa que cambió nuestro destino. Descubrimos que la vida es mucho más bella cuando se camina de la mano. Hoy, con el corazón lleno de gratitud, decidimos ser uno solo para siempre."
+                "Todo comenzó con una mirada y una sonrisa que cambió nuestro destino. Descubrimos que la vida es mucho más bella cuando se camina de la mano."
             </p>
             <img src="https://www.dropbox.com/scl/fi/yxcamxu6ark6qj5jf9da1/novios-corriendo.jpg?rlkey=wt1aapl5nh89afj7n53zou3qt&raw=1" class="img-full">
         </section>
@@ -129,30 +136,24 @@
             <h2 class="serif" style="color: white;">La Ceremonia</h2>
             <p><strong>Parroquia de Santo Tomas Apostol</strong><br>Tunkás, Yucatán</p>
             <p style="font-size: 0.9rem; opacity: 0.8;">18:00 Horas</p>
-            <a href="https://maps.app.goo.gl/TuDireccionDeLaIglesia" class="btn btn-color">Ver ubicación</a>
+            <a href="https://maps.app.goo.gl/YyR96jX6LhG5w7Xn9" target="_blank" class="btn btn-color">Ver ubicación</a>
         </section>
 
-        <section>
-            <p style="font-size: 0.7rem; letter-spacing: 3px; margin-bottom: 10px;">CUENTA REGRESIVA:</p>
+        <section id="cuenta-regresiva">
+            <p style="font-size: 0.7rem; letter-spacing: 3px; margin-bottom: 10px;">FALTAN:</p>
             <div class="timer-container">
-                <div class="t-block"><span class="t-val" id="d">00</span><span class="t-lab">Días</span></div>
-                <div class="t-block"><span class="t-val" id="h">00</span><span class="t-lab">Hrs</span></div>
-                <div class="t-block"><span class="t-val" id="m">00</span><span class="t-lab">Min</span></div>
-                <div class="t-block"><span class="t-val" id="s">00</span><span class="t-lab">Seg</span></div>
+                <div class="t-block"><span class="t-val" id="days">00</span><span class="t-lab">Días</span></div>
+                <div class="t-block"><span class="t-val" id="hours">00</span><span class="t-lab">Hrs</span></div>
+                <div class="t-block"><span class="t-val" id="minutes">00</span><span class="t-lab">Min</span></div>
+                <div class="t-block"><span class="t-val" id="seconds">00</span><span class="t-lab">Seg</span></div>
             </div>
-        </section>
-
-        <section style="padding-bottom: 20px;">
-            <p class="historia-texto" style="margin-bottom: 0;">
-                "Nuestro viaje apenas comienza y no importa a dónde nos lleve la vida, mientras sea de tu mano. Cada rincón del mundo es mágico si estoy junto a ti, porque mi verdadero hogar eres tú."
-            </p>
         </section>
 
         <section class="color-section">
             <h2 class="serif" style="color: white;">La Recepción</h2>
             <p><strong>Villa Lucila</strong><br>Calle 34, Tunkás</p>
             <p style="font-size: 0.9rem; opacity: 0.8;">20:30 Horas</p>
-            <a href="https://www.google.com/maps/place/VILLA+LUCILA1" class="btn btn-color">Ver ubicación</a>
+            <a href="https://maps.app.goo.gl/YyR96jX6LhG5w7Xn9" target="_blank" class="btn btn-color">Ver ubicación</a>
         </section>
 
         <img src="https://www.dropbox.com/scl/fi/snutqjlkrv7oglqswicq2/novios-besandoce.jpg?rlkey=ad7z44z08wgr0f4wcd20et7nz&raw=1" class="img-full">
@@ -160,7 +161,7 @@
         <section class="color-section" style="padding: 60px 30px;">
             <h2 class="serif" style="color: white;">¡Te esperamos!</h2>
             <p style="font-size: 0.9rem; margin-bottom: 25px;">Tu presencia es nuestro mejor regalo.</p>
-            <a href="https://wa.me/525654252153" class="btn btn-dark">CONFIRMAR ASISTENCIA</a>
+            <a href="https://wa.me/525654252153?text=Hola! Confirmo mi asistencia a la boda." class="btn btn-dark">CONFIRMAR ASISTENCIA</a>
         </section>
     </div>
 
@@ -172,30 +173,40 @@
 
         function iniciarMusica() {
             if (!playStarted) {
-                audio.play().catch(e => console.log("Esperando clic...")); 
+                audio.play().then(() => {
+                    mIcon.innerHTML = "⏸"; mText.innerHTML = "PAUSAR";
+                }).catch(e => console.log("Interacción requerida"));
                 playStarted = true;
-                mIcon.innerHTML = "⏸"; mText.innerHTML = "PAUSAR";
             }
         }
 
         function toggleMusic() {
             playStarted = true;
-            if (audio.paused) { audio.play(); mIcon.innerHTML = "⏸"; mText.innerHTML = "PAUSAR"; } 
-            else { audio.pause(); mIcon.innerHTML = "▶"; mText.innerHTML = "MÚSICA"; }
-        }
-
-        function timer() {
-            const dest = new Date("Feb 14, 2026 18:00:00").getTime();
-            const now = new Date().getTime();
-            const diff = dest - now;
-            if (diff > 0) {
-                document.getElementById('d').innerText = Math.floor(diff / (1000*60*60*24));
-                document.getElementById('h').innerText = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-                document.getElementById('m').innerText = Math.floor((diff % (1000*60*60)) / (1000*60));
-                document.getElementById('s').innerText = Math.floor((diff % (1000*60)) / 1000);
+            if (audio.paused) { 
+                audio.play(); mIcon.innerHTML = "⏸"; mText.innerHTML = "PAUSAR"; 
+            } else { 
+                audio.pause(); mIcon.innerHTML = "▶"; mText.innerHTML = "MÚSICA"; 
             }
         }
-        setInterval(timer, 1000);
+
+        // CONTADOR FUNCIONAL
+        function updateTimer() {
+            const targetDate = new Date("February 14, 2026 18:00:00").getTime();
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance > 0) {
+                document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+                document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
+            } else {
+                document.getElementById("cuenta-regresiva").innerHTML = "<h2 class='serif'>¡Llegó el día!</h2>";
+            }
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer(); // Ejecución inmediata al cargar
     </script>
 </body>
 </html>
