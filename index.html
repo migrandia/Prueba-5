@@ -37,11 +37,13 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        /* Portada con texto superpuesto */
+        /* Portada con texto superpuesto y sombra para visibilidad */
         .hero { position: relative; text-align: center; color: white; overflow: hidden; }
         .hero-text { 
             position: absolute; bottom: 10%; left: 0; width: 100%; 
             z-index: 2; text-transform: uppercase; letter-spacing: 4px;
+            /* === NUEVA SOMBRA PARA EL TEXTO === */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
         .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 3rem; margin: 10px 0; font-weight: normal; }
 
