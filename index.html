@@ -6,20 +6,15 @@
     
     <title>Nuestra Boda | Ana & Carlos</title>
     <meta property="og:title" content="Nuestra Boda | Ana & Carlos">
-    <meta property="og:description" content="Te invitamos a celebrar nuestro amor el 14 de febrero de 2026. ¡Acompáñanos!">
+    <meta property="og:description" content="¡Acompáñanos a celebrar nuestro amor! 14 de Febrero de 2026.">
     <meta property="og:image" content="https://www.dropbox.com/scl/fi/pd9mjnnpuz1awyw4memr7/novios-de-frente.jpg?rlkey=fzbs6iftt0125yat387uxnbei&raw=1">
-    <meta property="og:type" content="website">
-    <link rel="apple-touch-icon" href="https://www.dropbox.com/scl/fi/pd9mjnnpuz1awyw4memr7/novios-de-frente.jpg?rlkey=fzbs6iftt0125yat387uxnbei&raw=1">
-
+    
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&family=Tenor+Sans&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* === EDITA EL COLOR DE FONDO AQUÍ === */
             --color-fondo-seccion: #2c3e50; 
             --color-texto-seccion: #ffffff; 
-            /* =========================== */
-            
             --dorado: #bca080;
             --oscuro: #1a1a1a;
             --crema: #fdfcf9;
@@ -35,7 +30,7 @@
             box-shadow: 0 0 50px rgba(0,0,0,0.1); 
         }
 
-        /* Reproductor minimalista */
+        /* Reproductor */
         #music-box {
             position: fixed; top: 20px; right: 20px; z-index: 1000;
             background: white; border: 1px solid var(--dorado);
@@ -44,7 +39,6 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        /* Portada */
         .hero { position: relative; text-align: center; color: white; overflow: hidden; }
         .hero-text { 
             position: absolute; bottom: 10%; left: 0; width: 100%; 
@@ -53,7 +47,6 @@
         }
         .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 3rem; margin: 10px 0; font-weight: normal; }
 
-        /* Secciones */
         section { padding: 45px 30px; text-align: center; }
         
         .color-section { 
@@ -72,15 +65,38 @@
             font-weight: normal; 
         }
 
-        .historia-texto { 
-            font-size: 1rem; 
-            line-height: 1.8; 
-            color: #555; 
-            font-style: italic; 
-            margin-bottom: 30px; 
+        /* ESTILOS DEL CONTADOR */
+        .timer-container { 
+            display: flex; 
+            justify-content: center; 
+            gap: 10px; 
+            margin: 25px 0;
         }
 
-        /* Botones */
+        .t-block { 
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 10px;
+            min-width: 65px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .t-val { 
+            display: block; 
+            font-size: 1.6rem; 
+            color: var(--dorado); 
+            font-weight: bold; 
+            line-height: 1;
+        }
+
+        .t-lab { 
+            font-size: 0.6rem; 
+            text-transform: uppercase; 
+            opacity: 0.7; 
+            letter-spacing: 1px;
+        }
+
         .btn {
             display: inline-block; padding: 15px 25px; 
             text-decoration: none; font-size: 0.7rem;
@@ -88,17 +104,8 @@
             transition: 0.3s; border-radius: 2px;
         }
         .btn-color { border: 1px solid white; color: white; }
-        .btn-dark { background: var(--oscuro); color: white; width: 80%; border: none; cursor: pointer; }
+        .btn-dark { background: var(--oscuro); color: white; width: 85%; border: none; cursor: pointer; }
 
-        /* Contador */
-        .timer-container { 
-            display: flex; justify-content: center; gap: 15px; 
-            margin: 20px 0; padding: 20px 0; 
-            border-top: 1px solid #eee; border-bottom: 1px solid #eee; 
-        }
-        .t-block { min-width: 60px; }
-        .t-val { display: block; font-size: 1.5rem; color: var(--dorado); font-weight: bold; }
-        .t-lab { font-size: 0.6rem; text-transform: uppercase; opacity: 0.6; }
     </style>
 </head>
 <body onclick="iniciarMusica()">
@@ -126,46 +133,45 @@
         <section>
             <p style="font-size: 0.7rem; letter-spacing: 4px; color: var(--dorado); margin-bottom: 10px;">NUESTRA HISTORIA</p>
             <h2 class="serif">Como en un sueño...</h2>
-            <p class="historia-texto">
-                "Todo comenzó con una mirada y una sonrisa que cambió nuestro destino. Descubrimos que la vida es mucho más bella cuando se camina de la mano."
+            <p style="font-style: italic; color: #555; line-height: 1.6;">
+                "Todo comenzó con una mirada y una sonrisa que cambió nuestro destino."
             </p>
-            <img src="https://www.dropbox.com/scl/fi/yxcamxu6ark6qj5jf9da1/novios-corriendo.jpg?rlkey=wt1aapl5nh89afj7n53zou3qt&raw=1" class="img-full">
+            
+            <div class="timer-container" id="contador-seccion">
+                <div class="t-block"><span class="t-val" id="days">00</span><span class="t-lab">Días</span></div>
+                <div class="t-block"><span class="t-val" id="hours">00</span><span class="t-lab">Hrs</span></div>
+                <div class="t-block"><span class="t-val" id="minutes">00</span><span class="t-lab">Min</span></div>
+                <div class="t-block"><span class="t-val" id="seconds">00</span><span class="t-lab">Seg</span></div>
+            </div>
+
+            <img src="https://www.dropbox.com/scl/fi/yxcamxu6ark6qj5jf9da1/novios-corriendo.jpg?rlkey=wt1aapl5nh89afj7n53zou3qt&raw=1" class="img-full" style="border-radius: 5px;">
         </section>
 
         <section class="color-section">
             <h2 class="serif" style="color: white;">La Ceremonia</h2>
             <p><strong>Parroquia de Santo Tomas Apostol</strong><br>Tunkás, Yucatán</p>
             <p style="font-size: 0.9rem; opacity: 0.8;">18:00 Horas</p>
-            <a href="https://maps.app.goo.gl/YyR96jX6LhG5w7Xn9" target="_blank" class="btn btn-color">Ver ubicación</a>
+            <a href="https://maps.app.goo.gl/tunkas1" target="_blank" class="btn btn-color">Ver ubicación</a>
         </section>
 
-        <section id="cuenta-regresiva">
-            <p style="font-size: 0.7rem; letter-spacing: 3px; margin-bottom: 10px;">FALTAN:</p>
-            <div class="timer-container">
-                <div class="t-block"><span class="t-val" id="days">00</span><span class="t-lab">Días</span></div>
-                <div class="t-block"><span class="t-val" id="hours">00</span><span class="t-lab">Hrs</span></div>
-                <div class="t-block"><span class="t-val" id="minutes">00</span><span class="t-lab">Min</span></div>
-                <div class="t-block"><span class="t-val" id="seconds">00</span><span class="t-lab">Seg</span></div>
-            </div>
-        </section>
-
-        <section class="color-section">
-            <h2 class="serif" style="color: white;">La Recepción</h2>
+        <section class="color-section" style="background: var(--crema); color: var(--oscuro);">
+            <h2 class="serif" style="color: var(--dorado);">La Recepción</h2>
             <p><strong>Villa Lucila</strong><br>Calle 34, Tunkás</p>
             <p style="font-size: 0.9rem; opacity: 0.8;">20:30 Horas</p>
-            <a href="https://maps.app.goo.gl/YyR96jX6LhG5w7Xn9" target="_blank" class="btn btn-color">Ver ubicación</a>
+            <a href="https://maps.app.goo.gl/tunkas2" target="_blank" class="btn" style="border: 1px solid #333; color: #333;">Ver ubicación</a>
         </section>
 
         <img src="https://www.dropbox.com/scl/fi/snutqjlkrv7oglqswicq2/novios-besandoce.jpg?rlkey=ad7z44z08wgr0f4wcd20et7nz&raw=1" class="img-full">
 
         <section class="color-section" style="padding: 60px 30px;">
             <h2 class="serif" style="color: white;">¡Te esperamos!</h2>
-            <p style="font-size: 0.9rem; margin-bottom: 25px;">Tu presencia es nuestro mejor regalo.</p>
+            <p style="font-size: 0.9rem; margin-bottom: 25px;">Confirma tu asistencia antes del 1 de febrero</p>
             <a href="https://wa.me/525654252153?text=Hola! Confirmo mi asistencia a la boda." class="btn btn-dark">CONFIRMAR ASISTENCIA</a>
         </section>
     </div>
 
     <script>
+        // LÓGICA DE MÚSICA
         var audio = document.getElementById('cancion');
         var mIcon = document.getElementById('m-icon');
         var mText = document.getElementById('m-text');
@@ -175,7 +181,7 @@
             if (!playStarted) {
                 audio.play().then(() => {
                     mIcon.innerHTML = "⏸"; mText.innerHTML = "PAUSAR";
-                }).catch(e => console.log("Interacción requerida"));
+                }).catch(e => console.log("Click para iniciar música"));
                 playStarted = true;
             }
         }
@@ -189,7 +195,7 @@
             }
         }
 
-        // CONTADOR FUNCIONAL
+        // LÓGICA DEL CONTADOR
         function updateTimer() {
             const targetDate = new Date("February 14, 2026 18:00:00").getTime();
             const now = new Date().getTime();
@@ -201,12 +207,12 @@
                 document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
             } else {
-                document.getElementById("cuenta-regresiva").innerHTML = "<h2 class='serif'>¡Llegó el día!</h2>";
+                document.getElementById("contador-seccion").innerHTML = "<h2 class='serif'>¡Es hoy!</h2>";
             }
         }
 
         setInterval(updateTimer, 1000);
-        updateTimer(); // Ejecución inmediata al cargar
+        updateTimer();
     </script>
 </body>
 </html>
